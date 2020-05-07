@@ -3,7 +3,7 @@
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
-
+axios.get('https://api.github.com/users/KSCLopton')
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -16,7 +16,7 @@
   STEP 4: Pass the data received from Github into your function,
     and append the returned markup to the DOM as a child of .cards
 */
-
+makeFunction
 /*
   STEP 5: Now that you have your own card getting added to the DOM, either
     follow this link in your browser https://api.github.com/users/<Your github name>/followers,
@@ -50,6 +50,54 @@ const followersArray = [];
     </div>
 */
 
+
+function makeFunction({attrs}){
+const {avatar_url, name, login, location, html_url, followers, following, bio} = attrs;
+
+const cardDiv = document.createElement('div')
+const cardImg = document.createElement('img')
+const cardInfo = document.createElement('div')
+const nameHead = document.createElement('h3')
+const userName = document.createElement('p')
+const userLocation = document.createElement('p')
+const profile = document.createElement('p')
+const profAddress = document.createElement('a')
+const userFollowers = document.createElement('p')
+const userFollowing = document.createElement('p')
+const userBio = document.createElement('p')
+
+cardDiv.appendChild(cardImg)
+cardDiv.appendChild(cardInfo)
+cardInfo.appendChild(nameHead)
+cardInfo.appendChild(userName)
+cardInfo.appendChild(userLocation)
+cardInfo.appendChild(profile)
+profile.appendChild(profAddress)
+cardInfo.appendChild(userFollowers)
+cardInfo.appendChild(userFollowing)
+cardInfo.appendChild(userBio)
+
+cardDiv.classList.add('card')
+cardInfo.classList.add('card-info')
+nameHead.classList.add('name')
+userName.classList.add('username')
+
+
+cardImg.src = avatar_url
+nameHead.textContent = name
+userName.textContent = login
+userLocation.textContent = location
+profAddress.href = html_url
+profAddress.textContent = html_url
+userFollowers.textContent = followers
+userFollowing.textContent = following
+userBio.textContent = bio
+
+
+
+
+
+}
 /*
   List of LS Instructors Github username's:
     tetondan
